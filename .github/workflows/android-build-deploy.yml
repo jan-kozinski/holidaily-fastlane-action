@@ -19,7 +19,7 @@ jobs:
       - name: Decode Keystore
         run: gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch android/app/HolidailyProd.keystore.gpg > android/app/HolidailyProd.keystore
       - name: Build & deploy Android release
-        run:  echo "HOLIDAILY_UPLOAD_STORE_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}\nHOLIDAILY_UPLOAD_KEY_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}" >> android/gradle.properties && bundle exec fastlane android beta
+        run:  printf "HOLIDAILY_UPLOAD_STORE_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}\nHOLIDAILY_UPLOAD_KEY_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}" >> android/gradle.properties && bundle exec fastlane android beta
         env:
           ANDROID_JSON_KEY_FILE: android/app/holidaily-fastlane.json
           HOLIDAILY_UPLOAD_STORE_FILE: HolidailyProd.keystore
