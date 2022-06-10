@@ -1,0 +1,20 @@
+name: Android Build And Deployment
+
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up ruby env
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+          bundler-cache: true
+      - name: Decode Service Account Key JSON File
+        run: echo ${{ secrets.GPLAY_SERVICE_ACCOUNT_KEY }} | base64 -d > android/app/holidaily-fastlane.json
+      - name: Build & deploy Android release
+        run: bundle exec fastlane android beta
+        env:
+          ANDROID_JSON_KEY_FILE: android/app/holidaily-fastlane.json
