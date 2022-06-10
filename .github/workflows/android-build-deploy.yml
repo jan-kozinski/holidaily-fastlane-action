@@ -17,7 +17,9 @@ jobs:
         env:
           GPLAY_SERVICE_ACCOUNT_KEY: ${{ secrets.GPLAY_SERVICE_ACCOUNT_KEY }}
       - name: Decode Keystore
-        run: echo $KEYSTORE_GPD > HolidailyProd.keystore.asc && gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch HolidailyProd.keystore.asc > android/app/HolidailyProd.keystore
+        run: |
+          echo $KEYSTORE_GPD > HolidailyProd.keystore.asc
+          gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch HolidailyProd.keystore.asc > android/app/HolidailyProd.keystore
         env:
           KEYSTORE_GPD: ${{ secrets.KEYSTORE_GPD }}
       - name: Build & deploy Android release
