@@ -21,6 +21,7 @@ jobs:
       - name: Build & deploy Android release
         run:  printf "HOLIDAILY_UPLOAD_STORE_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}\nHOLIDAILY_UPLOAD_KEY_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}" >> android/gradle.properties && bundle exec fastlane android beta
         env:
+          ANDROID_PACKAGE_NAME: com.holidaily
           ANDROID_JSON_KEY_FILE: android/app/holidaily-fastlane.json
           HOLIDAILY_UPLOAD_STORE_FILE: HolidailyProd.keystore
           HOLIDAILY_UPLOAD_KEY_ALIAS: HolidailyProdKey
