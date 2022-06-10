@@ -24,3 +24,7 @@ jobs:
         run: bundle exec fastlane android beta
         env:
           ANDROID_JSON_KEY_FILE: android/app/holidaily-fastlane.json
+          HOLIDAILY_UPLOAD_STORE_FILE: HolidailyProd.keystore
+          HOLIDAILY_UPLOAD_KEY_ALIAS: HolidailyProdKey
+          HOLIDAILY_UPLOAD_STORE_PASSWORD: ${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}
+          HOLIDAILY_UPLOAD_KEY_PASSWORD: ${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}
