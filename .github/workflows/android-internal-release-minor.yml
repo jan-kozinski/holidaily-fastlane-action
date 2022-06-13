@@ -36,7 +36,9 @@ jobs:
       - name: Add keys to gradle.properties
         run:  printf "HOLIDAILY_UPLOAD_STORE_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}\nHOLIDAILY_UPLOAD_KEY_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}" >> android/gradle.properties
       - name: Deploy android beta
-        run: bundle exec fastlane android beta
+        run: echo $DEPLOY_VERSION
+        run: echo ${{ github.event.inputs.deploy_version }}
+       # run: bundle exec fastlane android beta
         env:
           ANDROID_PACKAGE_NAME: com.holidayly
           DEPLOY_TRACK: ${{ github.event.inputs.deploy_track }}
@@ -49,5 +51,5 @@ jobs:
           git add ./package.json
           git add  ./fastlane/report.xml
           git add ./android/app/build.gradle
-          git commit -m "bump to version $PACKAGE_VERSION"
-          git push
+        # git commit -m "bump to version $PACKAGE_VERSION"
+        #  git push
