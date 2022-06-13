@@ -1,5 +1,4 @@
-name: Android Build And Deployment
-
+name: Android Internal Test Deploy New Minor
 on:
   workflow_dispatch:
 jobs:
