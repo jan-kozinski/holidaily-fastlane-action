@@ -140,7 +140,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.holidaily"
+        applicationId "com.holidayly"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 44

@@ -1,4 +1,4 @@
-package com.holidaily;
+package com.holidayly;
 
 import android.app.Activity;
 import android.os.Handler;

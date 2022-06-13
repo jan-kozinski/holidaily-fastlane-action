@@ -1,4 +1,4 @@
-package com.holidaily;
+package com.holidayly;
 
 import expo.modules.ReactActivityDelegateWrapper;
 import com.facebook.react.ReactActivityDelegate;

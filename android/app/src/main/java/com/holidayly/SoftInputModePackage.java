@@ -1,4 +1,4 @@
-package com.holidaily;
+package com.holidayly;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
