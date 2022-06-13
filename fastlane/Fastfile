@@ -78,13 +78,10 @@ platform :android do
 
    end
 
-   desc "bump versions"
-   lane :bump_versions do
-      bump_version_package
-      bump_build_version
-
    desc "Android build and release to beta"
    lane :beta do
+      bump_version_package
+      bump_build_version
       gradle(task: "clean", project_dir: "./android/")
       gradle(task: "bundle", build_type: "Release", project_dir: "./android/")
 
