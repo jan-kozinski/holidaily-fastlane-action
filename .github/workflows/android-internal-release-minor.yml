@@ -1,4 +1,4 @@
-name: Android BUild And Deploy
+name: Android Build And Deploy
 on:
   workflow_dispatch:
     inputs:
@@ -39,6 +39,8 @@ jobs:
         run: bundle exec fastlane android beta
         env:
           ANDROID_PACKAGE_NAME: com.holidayly
+          DEPLOY_TRACK: ${{ github.event.inputs.deploy_track }}
+          DEPLOY_VERSION: ${{ github.event.iputs.deploy_version }}
       - name: Commit version bump
         run:  |
           PACKAGE_VERSION=$(sed -nr 's/^\s*\"version": "([0-9]{1,}\.[0-9]{1,}.*)",$/\1/p' package.json)
