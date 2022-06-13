@@ -13,9 +13,7 @@ jobs:
           ruby-version: 3.1.2
           bundler-cache: true
       - name: Decode Service Account Key JSON File
-        run: echo $GPLAY_SERVICE_ACCOUNT_KEY | base64 -di > android/app/holidaily-fastlane.json
-        env:
-          GPLAY_SERVICE_ACCOUNT_KEY: ${{ secrets.GPLAY_SERVICE_ACCOUNT_KEY }}
+        run: gpg --batch --yes --decrypt --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --output ./android/app/holidaily-fastlane.json ./android/app/holidaily-fastlane.json.gpg 
       - name: Decode Keystore
         run: gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch android/app/HolidailyProd.keystore.gpg > android/app/HolidailyProd.keystore
       - name: Build & deploy Android release
