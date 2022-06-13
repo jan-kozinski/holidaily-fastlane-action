@@ -28,8 +28,9 @@ jobs:
           ANDROID_PACKAGE_NAME: com.holidayly
       - name: Commit version bump
         run:  |
+          PACKAGE_VERSION=$(sed -nr 's/^\s*\"version": "([0-9]{1,}\.[0-9]{1,}.*)",$/\1/p' package.json)
           git config --global user.name 'jan-kozinski'
           git config --global user.email 'jan-kozinski@users.noreply.github.com'
           git add ./package.json
-          git commit -m "bump to version x"
+          git commit -m "bump to version $PACKAGE_VERSION"
           git push
