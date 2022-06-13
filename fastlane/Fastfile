@@ -77,7 +77,11 @@ platform :android do
       )
 
    end
-
+   lane :idk do
+      bump_version_package
+      bump_build_version
+   end
+   
    desc "Android build and release to beta"
    lane :beta do
       bump_version_package

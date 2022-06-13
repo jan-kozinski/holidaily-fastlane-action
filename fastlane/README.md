@@ -35,6 +35,11 @@ Ship to Testflight.
 ----
 
 ## Android
+### android idk
+```
+fastlane android idk
+```
+
 ### android beta
 ```
 fastlane android beta
