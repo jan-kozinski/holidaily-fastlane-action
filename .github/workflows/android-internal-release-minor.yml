@@ -1,6 +1,20 @@
-name: Android Internal Test Deploy New Minor
+name: Android BUild And Deploy
 on:
   workflow_dispatch:
+    inputs:
+      deploy_version:
+        type: choice
+        description: Type of new deployed version
+        options:
+        - patch
+        - minor
+        - major
+      deploy_track:
+        type: choice
+        description: Choose wheter you want to deploy to internal tests or to production
+        options:
+          - internal
+          - production
 jobs:
   deploy:
     runs-on: ubuntu-latest
