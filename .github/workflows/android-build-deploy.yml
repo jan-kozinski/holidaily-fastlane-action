@@ -13,15 +13,9 @@ jobs:
           ruby-version: 3.1.2
           bundler-cache: true
       - name: Decode Service Account Key JSON File
-        run: gpg --batch --yes --decrypt --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --output ./android/app/holidaily-fastlane.json ./android/app/holidaily-fastlane.json.gpg 
+        run: gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch ./android/app/holidaily-fastlane.json.gpg > ./android/app/holidaily-fastlane.json
       - name: Decode Keystore
         run: gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch android/app/HolidailyProd.keystore.gpg > android/app/HolidailyProd.keystore
       - name: Build & deploy Android release
         run:  printf "HOLIDAILY_UPLOAD_STORE_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}\nHOLIDAILY_UPLOAD_KEY_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}" >> android/gradle.properties && bundle exec fastlane android beta
-        env:
-          ANDROID_PACKAGE_NAME: com.holidaily
-          ANDROID_JSON_KEY_FILE: android/app/holidaily-fastlane.json
-          HOLIDAILY_UPLOAD_STORE_FILE: HolidailyProd.keystore
-          HOLIDAILY_UPLOAD_KEY_ALIAS: HolidailyProdKey
-          HOLIDAILY_UPLOAD_STORE_PASSWORD: ${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}
-          HOLIDAILY_UPLOAD_KEY_PASSWORD: ${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}
+ 
