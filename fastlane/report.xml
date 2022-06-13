@@ -5,67 +5,67 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="00: Verifying fastlane version" time="0.002850458">
+      <testcase classname="fastlane.lanes" name="00: Verifying fastlane version" time="0.003701246">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="01: install_dependencies" time="36.591389508">
+      <testcase classname="fastlane.lanes" name="01: install_dependencies" time="36.335078346">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="02: ensure_git_branch" time="0.002235233">
+      <testcase classname="fastlane.lanes" name="02: ensure_git_branch" time="0.002445233">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="03: git_pull" time="2.864268581">
+      <testcase classname="fastlane.lanes" name="03: git_pull" time="2.415010944">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="04: Switch to android bump_version_package lane" time="0.000315705">
+      <testcase classname="fastlane.lanes" name="04: Switch to android bump_version_package lane" time="0.000343004">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="05: npm version patch --no-git-tag-version" time="0.517818926">
+      <testcase classname="fastlane.lanes" name="05: npm version minor --no-git-tag-version" time="0.634605547">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="06: Switch to android bump_build_version lane" time="0.000391806">
+      <testcase classname="fastlane.lanes" name="06: Switch to android bump_build_version lane" time="0.000271104">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="07: load_json" time="0.000282604">
+      <testcase classname="fastlane.lanes" name="07: load_json" time="0.000310804">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="08: increment_version_code" time="0.002273233">
+      <testcase classname="fastlane.lanes" name="08: increment_version_code" time="0.001241317">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="09: increment_version_name" time="0.000820012">
+      <testcase classname="fastlane.lanes" name="09: increment_version_name" time="0.00073071">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="10: clean" time="119.967981866">
+      <testcase classname="fastlane.lanes" name="10: clean" time="195.145186137">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="11: bundleRelease" time="452.177093638">
+      <testcase classname="fastlane.lanes" name="11: bundleRelease" time="378.656966751">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="12: upload_to_play_store" time="22.685945375">
+      <testcase classname="fastlane.lanes" name="12: upload_to_play_store" time="26.346490996">
         
       </testcase>
     
