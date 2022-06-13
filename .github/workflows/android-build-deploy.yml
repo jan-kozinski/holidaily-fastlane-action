@@ -13,12 +13,16 @@ jobs:
           ruby-version: 3.1.2
           bundler-cache: true
       - name: Decode Service Account Key JSON File
-        run: gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch android/app/holidaily-fastlane.json.gpg > android/app/holidaily-fastlane.json
+        run: echo $GPLAY_SERVICE_ACCOUNT_KEY | base64 -di > android/app/holidaily-fastlane.json
+        env:
+          GPLAY_SERVICE_ACCOUNT_KEY: ${{ secrets.GPLAY_SERVICE_ACCOUNT_KEY }}
       - name: Decode Keystore
         run: gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch android/app/HolidailyProd.keystore.gpg > android/app/HolidailyProd.keystore
       - name: validate JSON key
         run: bundle exec fastlane run validate_play_store_json_key json_key:android/app/holidaily-fastlane.json
-      - name: Build & deploy Android release
-        run:  printf "HOLIDAILY_UPLOAD_STORE_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}\nHOLIDAILY_UPLOAD_KEY_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}" >> android/gradle.properties && bundle exec fastlane android beta
+      - name: Add keys to gradle.properties
+        run:  printf "HOLIDAILY_UPLOAD_STORE_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_STORE_PASSWORD }}\nHOLIDAILY_UPLOAD_KEY_PASSWORD=${{ secrets.HOLIDAILY_UPLOAD_KEY_PASSWORD }}" >> android/gradle.properties
+      - name: Deploy android beta
+        run: bundle exec fastlane android beta
         env:
           ANDROID_PACKAGE_NAME: com.holidayly
